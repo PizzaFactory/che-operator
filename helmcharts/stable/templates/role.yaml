@@ -19,7 +19,6 @@ metadata:
     app.kubernetes.io/part-of: che.eclipse.org
     app.kubernetes.io/name: che
   name: che-operator
-  namespace: eclipse-che
 rules:
   - apiGroups:
       - extensions
