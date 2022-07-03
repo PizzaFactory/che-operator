@@ -48,10 +48,16 @@ spec:
             - containerPort: 60000
               name: metrics
           env:
+{{- if eq .Values.watchAllNamespaces false }}
             - name: WATCH_NAMESPACE
+  {{- if .Values.watchNamespaces }}
+              value: {{.Values.watchNamespaces | join ","}}
+  {{- else }}
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+  {{- end }}
+{{- end }}
             - name: POD_NAME
               valueFrom:
                 fieldRef:
